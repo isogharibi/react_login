@@ -4,6 +4,8 @@ import "./register.scss";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import axios from "axios";
+
 function register() {
   const [Username, SetUsername] = useState("");
   const [Email, SetEmail] = useState("");
@@ -14,19 +16,29 @@ function register() {
     Event.preventDefault();
 
     if (Username !== "" && Email !== "" && Number !== "" && Grade !== "") {
-      fetch(`https://668fe5b6c0a7969efd9a085a.mockapi.io/api/users`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          UserName: Username,
-          Email: Email,
-          Number: Number,
-          Grade: Grade,
-          id: "1",
-        }),
-      })
-        .then((Response) => Response.json())
-        .then((Data) => console.log(Data));
+      // fetch(`https://668fe5b6c0a7969efd9a085a.mockapi.io/api/users`, {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     UserName: Username,
+      //     Email: Email,
+      //     Number: Number,
+      //     Grade: Grade,
+      //     id: "1",
+      //   }),
+      // })
+      //   .then((Response) => Response.json())
+      //   .then((Data) => console.log(Data));
+
+      axios.post("https://668fe5b6c0a7969efd9a085a.mockapi.io/api/users" , {
+        UserName: Username,
+        Email: Email,
+        Number: Number,
+        Grade: Grade,
+        id: "1",
+      }) 
+      .then((response) => console.log(response.data))
+
     } else {
       console.log("pleas write the inputs");
     }
