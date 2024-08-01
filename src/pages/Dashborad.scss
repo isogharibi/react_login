@@ -1,0 +1,40 @@
+.welcome-page {
+  text-align: center;
+  border-bottom: 2px solid #333;
+  background-color: #222;
+  color: #fff;
+  padding: 3rem;
+  margin-top: 15rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: start;
+}
+
+.cool-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-bottom: #fff 2px solid;
+  width: max-content;
+}
+
+.cool-button:hover {
+  background-color: #555;
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
