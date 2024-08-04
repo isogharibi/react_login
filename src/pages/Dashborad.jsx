@@ -1,20 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Dashborad.scss";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { LoginContext } from "../context/LoginContext";
 
 function Dashborad() {
-  const navigate = useNavigate();
+  const { Login, SetLogin } = useContext(LoginContext);
 
-  function ChangeLink() {
-    navigate("/login");
-  }
-
-  function ChangeLink2() {
-    navigate("/Register")
-  }
-
-
+  useEffect(() => {
+    const StoredToken = localStorage.getItem("stateLogin");
+    SetLogin(StoredToken);
+    console.log(Login);
+  }, [Login]);
 
   return (
     <section className="body">
@@ -29,12 +26,22 @@ function Dashborad() {
           praesentium laborum!
         </p>
         <div className="btns">
-          <button className="cool-button" onClick={ChangeLink}>
-            Login
-          </button>
-          <button className="cool-button" onClick={ChangeLink2}>
-            Register
-          </button>
+          {Login ? (
+            <>
+              <Link to={"/LoginedPage "}>
+                <button className="cool-button">LoginedPage</button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to={"/Login "}>
+                <button className="cool-button">Login</button>
+              </Link>
+              <Link to={"/Register "}>
+                <button className="cool-button">Register</button>{" "}
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </section>
